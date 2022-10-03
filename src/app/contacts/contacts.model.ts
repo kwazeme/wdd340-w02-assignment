@@ -3,13 +3,13 @@ export class Contact {
     public name: string;
     public phone: string;
     public imageUrl: string;
-    public group: string;
+    public email: string;
 
-    constructor(id: number, name: string, phone: string, imageUrl: string, group: string) {
+    constructor(id: number, name: string, phone: string, imageUrl: string, email: string) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.imageUrl = imageUrl;
-        this.group = group;
+        this.email = email;
     }
 }
