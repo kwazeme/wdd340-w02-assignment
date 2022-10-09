@@ -15,13 +15,14 @@
                    <cms-message-item
                    *ngFor="let messageEl of messages"
                    [message]="messageEl"
-                   (messageList)="onAddMessages(messageEl)"></cms-message-item>
+                   (messageList)="onAddMessage(messageEl)"></cms-message-item>
                 </div>
              </div>
           </div>
           <div class="panel-footer">
              <!--Add tag to load the MessageEditComponent-->
              <cms-message-edit
+             (msgAdded)="onAddMessage($event)"
              ></cms-message-edit>
           </div>
        </div>

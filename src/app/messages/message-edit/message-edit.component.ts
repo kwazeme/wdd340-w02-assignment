@@ -27,8 +27,8 @@ export class MessageEditComponent implements OnInit {
   }
 
   onClear() {
-    this.InputMsgSenderRef.nativeElement.value === "";
-    this.InputMsgTextRef.nativeElement.value === "";
+    this.InputMsgSenderRef.nativeElement.value = "";
+    this.InputMsgTextRef.nativeElement.value = "";
 
   }
 
