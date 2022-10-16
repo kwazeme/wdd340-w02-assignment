@@ -18,13 +18,25 @@ export class MessageService {
     return this.messages.slice();
    }
 
-   getMessage(id: string): Message {
-    this.messages.forEach(message => {
+  //  getMessage(id: string): Message {
+  //   this.messages.forEach(message => {
+  //     if (message.id = id) {
+  //       return Message
+  //     }
+  //   });
+  //   return null;
+  // }
+
+  getMessage(id: string): Message {
+    for (const message of this.messages) {
       if (message.id = id) {
-        return Message
+
+        return message
+        
       }
-    });
-    return null;
+      return null;
+    }
+
   }
 
   addMessage(message: Message) {
