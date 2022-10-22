@@ -1,7 +1,7 @@
 <div class="panel panel-info clearfix">
     <div class="panel panel-heading clearfix">
         <div class="col-xs-4 pull-right">
-            <button class="btn btn-success">New Contact</button>
+            <button class="btn btn-success" routerLink="new">New Contact</button>
         </div>
         <div class="col-xs-3 pull-left">
             <h3>Contact</h3>
@@ -13,7 +13,7 @@
             <cms-contact-item
             *ngFor="let contactEl of contacts"
             [contact]="contactEl"
-            (contactSelected)="onContactSelected(contactEl)"></cms-contact-item>
+            ></cms-contact-item>
         </div>
     </div>
 </div>

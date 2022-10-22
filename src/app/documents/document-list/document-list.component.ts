@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Document } from '../document.model';
 import { DocumentService } from '../document.service';
 
@@ -19,16 +20,33 @@ export class DocumentListComponent implements OnInit {
     // new Document(7, 'WDD130: Web Fundamentals', 'Web design and development principles. The course uses hands-on activities with students actually participating in simple Web design projects and programming','https://byui.instructure.com/courses/160482/assignments/syllabus', 'null' ),
     // new Document(8, 'WDD230: Web Frontend I', 'This course focuses on contemporary front-end web design and development technologies and the application of those technologies in building web sites. When planning, designing, and developing websites and applications, successful web developers','https://byui.instructure.com/courses/174366/pages/wdd-230-syllabus', 'null' )
   ];
+  documentId: string = '';
 
-  constructor(private documentService: DocumentService) { }
+  constructor(
+    private documentService: DocumentService,
+    private router: Router,
+    private route: ActivatedRoute
+    ) {
+    this.documents = this.documentService.getDocuments();
+   }
 
   ngOnInit() {
     this.documents = this.documentService.getDocuments();
+    this.documentService.documentChangedEvent
+    .subscribe(
+        (document:Document[]) => {
+          this.documents = document;
+        })   
   }
 
-  onSelectedDocument(document: Document) {
-    // this.selectedDocumentEvent.emit(document);
-    this.documentService.documentSelectedEvent.emit(document);
-  }
+  // onSelectedDocument(document: Document) {
+  //   // this.selectedDocumentEvent.emit(document);
+  //   this.documentService.documentSelectedEvent.emit(document);
+  // }
+
+ 
+
 
 }
+
+
