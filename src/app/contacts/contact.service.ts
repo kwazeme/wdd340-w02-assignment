@@ -10,7 +10,7 @@ export class ContactService {
   contactSelectedEvent = new Subject<Contact>();
   contactChangedEvent = new Subject<Contact[]>();
 
-  private contacts: Contact[];
+  contacts: Contact[];
   maxId: number;
   currentId: number;
   maxContactId: number;
@@ -26,13 +26,13 @@ export class ContactService {
    }
 
   getContact(id: string): Contact {
-    for (const contact of this.contacts.slice()) {
+    for (let contact of this.contacts.slice()) {
       if (contact.id === id) {
 
         return contact;
         
       };
-      return null;
+      // return null;
     }
 
   }

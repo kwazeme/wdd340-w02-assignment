@@ -25,7 +25,7 @@ export class MessageService {
         return message;
         
       }
-      return null;
+      // return null;
     }
 
   }
