@@ -8,7 +8,7 @@ import { MOCKMESSAGES } from './MOCKMESSAGES';
 })
 export class MessageService {
   messageChangedEvent = new EventEmitter<Message[]>();
-  private messages: Message[] = [];
+  private messages: Message[];
 
   constructor() {
     this.messages = MOCKMESSAGES;
@@ -18,20 +18,11 @@ export class MessageService {
     return this.messages.slice();
    }
 
-  //  getMessage(id: string): Message {
-  //   this.messages.forEach(message => {
-  //     if (message.id = id) {
-  //       return Message
-  //     }
-  //   });
-  //   return null;
-  // }
-
   getMessage(id: string): Message {
-    for (const message of this.messages) {
-      if (message.id = id) {
+    for (const message of this.messages.slice()) {
+      if (message.id === id) {
 
-        return message
+        return message;
         
       }
       return null;
