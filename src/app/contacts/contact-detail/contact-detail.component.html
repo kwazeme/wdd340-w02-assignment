@@ -24,4 +24,17 @@
         </a>
         </div>
     </div>
+    <div class="row" *ngIf="contact.group">
+        <div class="col-xs-12">
+          <strong>Group Contacts:</strong>
+          <div class="row" style="min-height: 3rem">
+            <div *ngFor="let groupContact of contact.group">
+              <cms-contact-item
+                class="col-sm-11"
+                [contact]="groupContact"
+              ></cms-contact-item>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>

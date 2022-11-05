@@ -26,15 +26,15 @@ export class ContactService {
    }
 
   getContact(id: string): Contact {
-    for (let contact of this.contacts.slice()) {
+    for (let index = 0; index < this.contacts.length; index++) {
+      const contact = this.contacts[index];
       if (contact.id === id) {
 
         return contact;
         
       };
-      // return null;
     }
-
+    return null;
   }
 
   addContact(newContact: Contact) {
@@ -67,7 +67,12 @@ export class ContactService {
         return;
     }
     const pos = this.contacts.indexOf(originalContact);
-    newContact[pos] = newContact;
+    if (pos < 0) {
+    return;
+    };
+    // const pos = this.contacts.indexOf(originalContact);
+    newContact.id = originalContact.id;
+    this.contacts[pos] = newContact;
     this.contactListClone = this.contacts.slice();
     this.contactChangedEvent.next(this.contactListClone);
 }
