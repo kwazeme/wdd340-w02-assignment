@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DndModule } from "ng2-dnd";
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
@@ -24,6 +25,7 @@ import { MessageService } from './messages/message.service';
 import { DocumentService } from './documents/document.service';
 import { ContactService } from './contacts/contact.service';
 import { WinRefService } from './win-ref.service';
+import { ContactsFilterPipe } from './contacts/contacts-filter.pipe';
 
 
 
@@ -44,13 +46,15 @@ import { WinRefService } from './win-ref.service';
     MessageListComponent,
     DropdownDirective,
     DocumentEditComponent,
-    ContactEditComponent
+    ContactEditComponent,
+    ContactsFilterPipe
 
  
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
     DndModule.forRoot()
@@ -58,7 +62,6 @@ import { WinRefService } from './win-ref.service';
   providers: [
     MessageService,
     DocumentService,
-    ContactService,
     WinRefService
   ],
   bootstrap: [AppComponent]

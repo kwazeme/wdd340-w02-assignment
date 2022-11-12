@@ -1,9 +1,9 @@
 
-input.required.ng-invalid {
+input.required.ng-invalid.ng-touched {
   border: 1px solid red;
 }
 
-.invalid.ng-invalid.ng-dirty {
+input.invalid.ng-invalid.ng-dirty {
   border: 1px solid red;
 }
 

@@ -27,7 +27,7 @@ export class ContactEditComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.route.params
       .subscribe (
-      (params: Params): boolean => {
+      (params: Params) => {
         this.id = params['id'];
          if (this.id === null || this.id === undefined) {
           this.editMode = false;
@@ -57,7 +57,7 @@ export class ContactEditComponent implements OnInit, OnDestroy {
       value.email,
       value.phone,
       value.imageUrl,
-      value.group
+      value.groupContacts
     )
     if (this.editMode) {
       this.contactService.updateContact(this.originalContact, newContact);
@@ -72,31 +72,33 @@ export class ContactEditComponent implements OnInit, OnDestroy {
   }
 
   addToGroup($event: any){
-    console.log('dropdata');
+    console.log('addmethodinit');
     const selectedContact: Contact = $event.dragData;
-    const invalidGroupContact = this.isInvalidContact(selectedContact);
-    if (invalidGroupContact) {
+    // const invalidGroupContact = this.isInvalidContact(selectedContact);
+    if (this.isInvalidContact(selectedContact)) {
+      console.log('isvalidinit');
       return;
     }
+    console.log('pushinit');
     this.groupContacts.push(selectedContact);
     console.log(this.groupContacts);
   }
 
-  isInvalidContact(newContact: Contact) {
-    if (!newContact) {
-      return true;      
-    }
-    if (this.contact && newContact.id === this.contact.id) {
-      return true;
-    }
-    for (let i = 0; i < this.groupContacts.length; i++) {
-      // const element = this.groupContacts[i];
-      if (newContact.id === this.groupContacts[i].id) {
-        return true;        
-      }
-    }
-    return false;
+isInvalidContact(newContact: Contact) {
+  if (!newContact) {// newContact has no value
+    return true;
   }
+  if (this.contact && newContact.id === this.contact.id) {
+     return true;
+  }
+  for (let i = 0; i < this.groupContacts.length; i++){
+     if (newContact.id === this.groupContacts[i].id) {
+       return true;
+    }
+  }
+  return false;
+}
+
 
   onRemoveItem(index: number) {
     if (index < 0 || index >= this.groupContacts.length) {

@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-5">
-       <div class="panel panel-default">
+       <div class="panel panel-info">
           <div class="panel-heading">
              <div class="row pad-left-right">
                 <span class="title pull-left">Messages</span>
@@ -13,17 +13,15 @@
                 <div class="col-xs-12">
                    <!--Add tag to load the MessageItemComponent-->
                    <cms-message-item
-                   *ngFor="let messageEl of messages"
-                   [message]="messageEl"
-                   (messageList)="onAddMessage(messageEl)"></cms-message-item>
+                   *ngFor="let message of messages;"
+                   [message]="message"
+                   ></cms-message-item>
                 </div>
              </div>
           </div>
           <div class="panel-footer">
              <!--Add tag to load the MessageEditComponent-->
-             <cms-message-edit
-             (msgAdded)="onAddMessage($event)"
-             ></cms-message-edit>
+             <cms-message-edit></cms-message-edit>
           </div>
        </div>
     </div>
