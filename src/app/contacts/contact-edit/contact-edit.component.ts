@@ -34,25 +34,24 @@ export class ContactEditComponent implements OnInit, OnDestroy {
           return;
          }
         this.originalContact = this.contactService.getContact(this.id);
-        
-        if (this.originalContact === undefined 
+
+        if (this.originalContact === undefined
           || this.originalContact === null) {
-            return;          
+            return;
         }
         this.editMode = true;
         this.contact = JSON.parse(JSON.stringify(this.originalContact));
-      
-        if (this.originalContact.group !== null || 
+
+        if (this.originalContact.group !== null ||
           this.originalContact.group !== undefined) {
           this.groupContacts = (this.contact.group);
         }
-    })
+    });
   }
 
   onSubmit(form: NgForm) {
     let value = form.value;  // get values from form’s fields
     let newContact = new Contact(
-      value.id,
       value.name,
       value.email,
       value.phone,
